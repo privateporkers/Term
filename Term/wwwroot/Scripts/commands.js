@@ -26,25 +26,23 @@ function termExitHandler() {
 
 function termHandler() {
     this.newLine();
-    if (this.lineBuffer.match("exit")) {
+    var ctrl = this.lineBuffer;
+    if (ctrl == 'exit') {
         this.close();
         return;
     }
-    else if (this.lineBuffer.match("kant")) {
-        this.write(kant, true);
-        return;
-    }
-    else if (this.lineBuffer.match("clear")) {
+
+    else if (ctrl == 'clear') {
         this.clear();
     }
-    else if (this.lineBuffer != '') {
+    else if (ctrl == 'help') {
+        this.write("");
+    }
+    else if (ctrl != '') {
         this.write('You write: ' + this.lineBuffer.replace(/%/g, '%%'));
         this.newLine();
     }
-    /*else if(this.lineBuffer.match(/^\s*help\s*s$/i)) {
-      this.close();
-      return;
-    }*/
+
     this.prompt();
 }
 
