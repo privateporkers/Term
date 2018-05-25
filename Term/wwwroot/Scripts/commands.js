@@ -5,8 +5,13 @@ function termOpen() {
             handler: termHandler,
             x: 100,
             y: 100,
-            cols: 80,
-            rows: 24
+            cols: 200,
+            rows: 50,
+            crsrBlinkMode: true,
+            blinkDelay: 500,
+            bgColor: 'green',
+            frameColor: '#77dd11',
+            textColor: '#77dd11'
         });
 
         term.open();
@@ -27,11 +32,20 @@ function termExitHandler() {
 function termHandler() {
     this.newLine();
     var ctrl = this.lineBuffer;
+
     if (ctrl == 'exit') {
         this.close();
         return;
     }
-
+    else if (ctrl == 'color') {
+        this.setTextColor('black');
+    }
+    else if (ctrl == 'bgcolor') {
+        this.bgColor = 'black';
+        for (var r = 0, l = this.conf.rows; r < l; r++) {
+            this.redraw(r);
+        }
+    }
     else if (ctrl == 'clear') {
         this.clear();
     }

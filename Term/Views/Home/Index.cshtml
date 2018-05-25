@@ -2,30 +2,35 @@
     ViewData["Title"] = "Index";
 }
 <head>
-    <script languag="Javascript" type="text/javascript" src="~/Scripts/termlib.js"></script>
-    <script type="text/javascript" src="~/Scripts/commands.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="~/Stylesheets/style.css">
+    <script src="~/Scripts/p5.js" type="text/javascript"></script>
+    <script src="~/Scripts/p5.dom.js" type="text/javascript"></script>
 </head>
 
-<body bgcolor="#222222" link="77dd11" text="#cccccc" alink="#eeeeee" vlink="#77dd11" topmargin="0" bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0">
-    <table border="0" cellspacing="0" width="190" class="inventory">
-        <tr>
-            <td nowrap>
-                Text rap yo
-            </td>
-        <tr>
-        <tr>
-            <td nowrap>
-                <a href="javascript:termOpen()" onfocus="if(this.blur) this.blur();" onmouseover="window.status='open terminal'; return true" onmouseout="window.status=''; return true" class="termopen">&gt; open terminal &nbsp;</a>
-            </td>
-        <tr>
-        <tr>
-            <td nowrap>
-                &nbsp;
-            </td>
-        <tr>
-    </table>
+<body>
+    <script type="text/javascript">
+        var input;
+        var row1;
+        var table1;
 
-    <div id="termDiv" style="position:absolute; visibility: hidden; z-index:1;"></div>
+        function setup() {
+            noCanvas();
+            table1 = createElement('table');
+            row1 = createElement('tr');
+            row1.parent(table1);
+            row1.html('Test');
+
+            input = createInput();
+
+            input.changed(change);
+        }
+
+        function change() {
+            var row = createElement('tr');
+            row.parent(table1);
+            row.html(input.value());
+        }
+        function draw() {
+
+        }
+    </script>
 </body>
