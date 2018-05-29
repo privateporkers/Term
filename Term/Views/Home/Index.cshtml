@@ -19,13 +19,14 @@
             table1 = createElement('table');
             div1 = createDiv('>');
             input = createInput();
-            input.parent(div1);
+            div1.style("float", "left");
             input.style("width", "500px");
             input.style("border", "none");
             input.style("background", "black");
             input.style("color", "greenyellow");
             input.style("font-size", "18px");
             input.style("font-family", "monospace");
+            input.style("outline", "none");
 
             input.changed(change);
         }
