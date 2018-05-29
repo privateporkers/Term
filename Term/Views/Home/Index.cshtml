@@ -11,11 +11,10 @@
 <body>
     <script type="text/javascript">
         var input;
-        var row1;
+        var row;
         var table1;
         var div1;
-        var comm;
-        var green = color(0, 255, 70);
+        var test;
 
 
         function setup() {
@@ -24,31 +23,79 @@
             div1 = createDiv('>');
             input = createInput();
             input.parent(div1);
+
+            //CSS styling for usser input
             input.style("width", "500px");
             input.style("border", "none");
             input.style("background", "black");
-            input.style("color", "greenyello");
+            //input text color
+            input.style("color", "rgb(0, 255, 70)");
             input.style("font-size", "24px");
-            //input.style("font", "monospace");
             input.style("font-family", 'Press Start 2P');
 
-            input.changed(change);
+            //function creates a new row for the table 'table1' whem pressed enter
+            input.changed(terminal);
+
+            test = createElement("h1", "hell");
+
         }
 
-        function change() {
-            var row = createElement('tr');
+        function createRow(){
+        }
+
+        function terminal() {
+            
+            //creates the new row
+            row = createElement('tr');
             row.parent(table1);
-            row.html('>' + input.value());
+
+            //adds text and styling to each row
+            //row.html('>You typed: ' + input.value());
+            var command = input.value();
+            command.trim();
+            var index = command.indexOf(' ');
+            var commandStrTwo = command.substring(index + 1);
+            var commandStrOne = command.substring(0, index);
+
+            if(commandStrOne == "echo") { 
+                echoCom(commandStrTwo);
+            }
+
+            else if (commandStrOne == "clear") {
+                clearCom();
+            }
+            else {
+                notCom(command);
+            }
+
             row.style("font-family", "Press Start 2P");
             row.style("font-size", "24px");
             input.value('');
+            
         }
         function keyPressed() {
             if (keyCode == ENTER && (input.value() == /^\s+$/gi || input.value() == '')) {
-                var row = createElement('tr');
+                row = createElement('tr');
                 row.parent(table1);
                 row.html('>');
             }
         }
+
+        function echoCom(str){
+            row = createElement('tr');
+            row.parent(table1);
+            row.html('>' + str);
+        }
+
+        /*function clearCom() {
+            test.remove();
+        }
+
+        function notCom(str) {
+            row = createElement('tr');
+            row.parent(table1);
+            if(str != "clear" && str != "echo")
+            row.html('>' + str + ' is not a command!');
+        }*/
     </script>
 </body>
