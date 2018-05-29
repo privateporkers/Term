@@ -1,4 +1,17 @@
-﻿input{
+﻿/* press-start-2p-regular - latin */
+@font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../Font/press-start-2p-v6-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Press Start 2P Regular'), local('PressStart2P-Regular'), url('../fonts/press-start-2p-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../Font/press-start-2p-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../Font/press-start-2p-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../Font/press-start-2p-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../Font/press-start-2p-v6-latin-regular.svg#PressStart2P') format('svg'); /* Legacy iOS */
+}
+
+input {
     font-family: 'Press Start 2P';
 }
 
@@ -10,5 +23,6 @@ body {
     font-family: 'Press Start 2P';
     color: rgb(0, 255, 70);
 }
+
 
 
