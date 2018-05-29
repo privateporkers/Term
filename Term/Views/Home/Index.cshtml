@@ -12,14 +12,14 @@
     <script type="text/javascript">
         var input;
         var row;
-        var table1;
+        var termTable;
         var div1;
         var test;
 
 
         function setup() {
             noCanvas();
-            table1 = createElement('table');
+            termTable = createElement('table');
             div1 = createDiv('>');
             input = createInput();
             input.parent(div1);
@@ -33,7 +33,7 @@
             input.style("font-size", "24px");
             input.style("font-family", 'Press Start 2P');
 
-            //function creates a new row for the table 'table1' whem pressed enter
+            //function creates a new row for the termTable 'termTable' whem pressed enter
             input.changed(terminal);
 
             test = createElement("h1", "hell");
@@ -47,7 +47,7 @@
             
             //creates the new row
             row = createElement('tr');
-            row.parent(table1);
+            row.parent(termTable);
 
             //adds text and styling to each row
             //row.html('>You typed: ' + input.value());
@@ -61,7 +61,7 @@
                 echoCom(commandStrTwo);
             }
 
-            else if (commandStrOne == "clear") {
+            else if (command == "clear") {
                 clearCom();
             }
             else {
@@ -76,26 +76,29 @@
         function keyPressed() {
             if (keyCode == ENTER && (input.value() == /^\s+$/gi || input.value() == '')) {
                 row = createElement('tr');
-                row.parent(table1);
+                row.parent(termTable);
                 row.html('>');
             }
         }
 
         function echoCom(str){
             row = createElement('tr');
-            row.parent(table1);
+            row.parent(termTable);
             row.html('>' + str);
         }
 
-        /*function clearCom() {
-            test.remove();
+        function clearCom() {
+            termTable.remove();
+            termTable = createElement("table");
         }
 
         function notCom(str) {
             row = createElement('tr');
-            row.parent(table1);
-            if(str != "clear" && str != "echo")
+            row.parent(termTable);
+
+            if(str != "clear" && str != "echo"){
             row.html('>' + str + ' is not a command!');
-        }*/
+            }
+        }
     </script>
 </body>
