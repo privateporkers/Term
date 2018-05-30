@@ -65,6 +65,9 @@
                 else if (command == "clear") {
                     clearCom();
                 }
+                else if(command == "help"){
+                    helpCom();
+                }
                 else {
                     notCom(command);
                 }
@@ -85,6 +88,10 @@
             }
 
             function helpCom(){
+                createRow();
+                row.html('>' +'echo [message]');
+                createRow();
+                row.html('>' +'clear');
             }
 
             function clearCom() {
