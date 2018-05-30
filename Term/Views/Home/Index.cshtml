@@ -12,44 +12,97 @@
     <hi>Hello World</hi>
     <script type="text/javascript">
         var input;
-        var row1;
-        var table1;
+        var row;
+        var termTable;
         var div1;
+        var test;
 
         function setup() {
             noCanvas();
-            table1 = createElement('table');
+            termTable = createElement('table');
             div1 = createDiv('>');
             input = createInput();
+          
+            input.parent(div1);
+
+            //CSS styling for usser input
             div1.style("float", "left");
             input.style("outline", "none");
             input.style("width", "500px");
             input.style("border", "none");
             input.style("background", "black");
-            input.style("color", "greenyellow");
+            //input text color
+            input.style("color", "rgb(0, 255, 70)");
             input.style("font-size", "24px");
-            //input.style("font", "monospace");
             input.style("font-family", "Press Start 2P");
+          
+            //function creates a new row for the termTable 'termTable' whem pressed enter
+            input.changed(terminal);
 
-            input.changed(change);
+            test = createElement("h1", "hell");
         }
 
-        function change() {
-            var row = createElement('tr');
-            row.parent(table1);
+        function createRow(){
+        }
+
+        function terminal() {
+            
+            //creates the new row
+            row = createElement('tr');
+            row.parent(termTable);
+
+            //adds text and styling to each row
+            //row.html('>You typed: ' + input.value());
+            var command = input.value();
+            command.trim();
+            var index = command.indexOf(' ');
+            var commandStrTwo = command.substring(index + 1);
+            var commandStrOne = command.substring(0, index);
+
+            if(commandStrOne == "echo") { 
+                echoCom(commandStrTwo);
+            }
+
+            else if (command == "clear") {
+                clearCom();
+            }
+            else {
+                notCom(command);
+            }
+
             row.style("font-family", "Press Start 2P");
             row.style("font-size", "24px");
             row.html('>' + input.value());
             
             input.value('');
+            
         }
+
         function keyPressed() {
             if (keyCode == ENTER && (input.value() == /^\s+$/gi || input.value() == '')) {
-                var row = createElement('tr');
-                row.parent(table1);
-                row.style("font-family", "Press Start 2P");
-                row.style("font-size", "24px");
+                row = createElement('tr');
+                row.parent(termTable);
                 row.html('>');
+            }
+        }
+
+        function echoCom(str){
+            row = createElement('tr');
+            row.parent(termTable);
+            row.html('>' + str);
+        }
+
+        function clearCom() {
+            termTable.remove();
+            termTable = createElement("table");
+        }
+
+        function notCom(str) {
+            row = createElement('tr');
+            row.parent(termTable);
+
+            if(str != "clear" && str != "echo"){
+            row.html('>' + str + ' is not a command!');
             }
         }
     </script>
