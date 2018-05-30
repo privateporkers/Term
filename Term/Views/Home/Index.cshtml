@@ -9,91 +9,114 @@
 </head>
 
 <body>
-    <script type="text/javascript">
-        var input;
-        var row;
-        var termTable;
-        var div1;
-        var test;
+    <div id="console">
+        <script type="text/javascript">
+            var input;
+            var row;
+            var termTable;
+            var div1;
+            var test;
+            var placeHolder;
 
-        function setup() {
-            noCanvas();
-            termTable = createElement('table');
-            div1 = createDiv('>');
-            input = createInput();         
-            input.parent(div1);
-            input.elt.focus();
-            div1.style("float", "left");         
-            
-            //function creates a new row for the termTable 'termTable' when pressed enter
-            input.changed(terminal);
-        }
+            function setup() {
+                noCanvas();
+                termTable = createElement('table');
+                termTable.parent("console");
 
-        function createRow(){
-        }
+                placeHolder = createP('>');
+                placeHolder.parent("console");
 
-        function terminal() {
-            
-            //creates the new row
-            row = createElement('tr');
-            row.parent(termTable);
+                div1 = createDiv();
+                div1.parent("console");
+                div1.id('bar');
 
-            //adds text and styling to each row
-            //row.html('>You typed: ' + input.value());
-            var command = input.value();
-            command.trim();
-            var index = command.indexOf(' ');
-            var commandStrTwo = command.substring(index + 1);
-            var commandStrOne = command.substring(0, index);
+                input = createInput();
+                input.parent(div1);
 
-            if(commandStrOne == "echo") { 
-                echoCom(commandStrTwo);
-            }
-            else if (command == "clear") {
-                clearCom();
-            }
-            else {
-                notCom(command);
+                input.elt.focus();
+
+                //function creates a new row for the termTable 'termTable' when pressed enter
+                input.changed(terminal);
             }
 
-            row.style("font-family", "Press Start 2P");
-            row.style("font-size", "24px");
-            
-            input.value('');
-            
-        }
+            function createRow() {
+            }
 
-        function keyPressed() {
-            if (keyCode == ENTER && (input.value() == /^\s+$/gi || input.value() == '')) {
+            function terminal() {
+
+                //creates the new row
                 row = createElement('tr');
                 row.parent(termTable);
-                row.html('>');
+
+                //adds text and styling to each row
+                //row.html('>You typed: ' + input.value());
+                var command = input.value();
+                command = command.trim();
+                var index = command.indexOf(' ');
+                var commandStrTwo = command.substring(index + 1);
+                var commandStrOne = command.substring(0, index);
+
+                if (commandStrOne == "echo") {
+                    echoCom(commandStrTwo);
+                }
+                else if (command == "clear") {
+                    clearCom();
+                }
+                else {
+                    notCom(command);
+                }
+
+                input.value('');
             }
-        }
 
-        function echoCom(str){
-            row = createElement('tr');
-            row.parent(termTable);
-            row.html('>' + str);
-        }
+            function keyPressed() {
+                if (keyCode == ENTER && input.value() == '') {
+                    row = createElement('tr');
+                    row.parent(termTable);
+                    row.html('>');
+                }
+            }
 
-        function clearCom() {
-            termTable.remove();
-            div1.remove();
-            input.remove();
-            termTable = createElement("table");
-            div1 = createDiv('>');
-            input = createInput();
-            input.parent(div1);
-            input.elt.focus();
+            function echoCom(str) {
+                row = createElement('tr');
+                row.parent(termTable);
+                row.html('>' + str);
+            }
 
-            input.changed(terminal);
-        }
+            function clearCom() {
+                termTable.remove();
+                div1.remove();
+                input.remove();
+                placeHolder.remove();
 
-        function notCom(str) {
-            row = createElement('tr');
-            row.parent(termTable);
-            row.html('>' + str + ' is not a command!');
-        }
-    </script>
+                termTable = createElement('table');
+                termTable.parent("console");
+
+                placeHolder = createP('>');
+                placeHolder.parent("console");
+
+                div1 = createDiv();
+                div1.parent("console");
+                div1.id('bar');
+
+                input = createInput();
+                input.parent(div1);
+
+                input.elt.focus();
+
+                input.changed(terminal);
+            }
+
+            function notCom(str) {
+                row = createElement('tr');
+                row.parent(termTable);
+                if (str == '') {
+                    row.html('>');
+                }
+                else {
+                    row.html('>' + str + ' is not a command!');
+                }     
+            }
+        </script>
+    </div>
 </body>
