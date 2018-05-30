@@ -40,6 +40,8 @@
             }
 
             function createRow() {
+                row = createElement('tr');
+                row.parent(termTable);
             }
 
             function terminal() {
@@ -56,6 +58,7 @@
                 var commandStrTwo = command.substring(index + 1);
                 var commandStrOne = command.substring(0, index);
 
+                //command conditionals
                 if (commandStrOne == "echo") {
                     echoCom(commandStrTwo);
                 }
@@ -71,16 +74,17 @@
 
             function keyPressed() {
                 if (keyCode == ENTER && input.value() == '') {
-                    row = createElement('tr');
-                    row.parent(termTable);
+                    createRow();
                     row.html('>');
                 }
             }
 
             function echoCom(str) {
-                row = createElement('tr');
-                row.parent(termTable);
+                createRow();
                 row.html('>' + str);
+            }
+
+            function helpCom(){
             }
 
             function clearCom() {
