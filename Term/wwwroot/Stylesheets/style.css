@@ -13,6 +13,12 @@
 
 input {
     font-family: 'Press Start 2P';
+    font-size: 24px;
+    color: rgb(0, 255, 70);
+    background-color: black;
+    border: none;
+    width: 500px;
+    outline: none;
 }
 
 body {
