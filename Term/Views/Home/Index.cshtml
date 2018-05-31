@@ -4,6 +4,7 @@
 <head>
     <script src="~/Scripts/p5.js" type="text/javascript"></script>
     <script src="~/Scripts/p5.dom.js" type="text/javascript"></script>
+    <script src="~/Scripts/sketch.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="~/Stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
@@ -61,7 +62,6 @@
                 command = command.trim();
                 var index = command.indexOf(' ');
                 commandStrTwo = command.substring(index + 1);
-                baseWord = "hello";
                 var commandStrOne = command.substring(0, index);
 
                 //command conditionals
@@ -93,6 +93,8 @@
                 if(str == "gg"){
                     test = true;
                 }
+                createRow();
+                row.html('>text ' + str);
             }
 
             function textChange(){
