@@ -75,7 +75,12 @@
             }
 
             function echoCom(str) {
-                createRow('>' + str);
+                if (str.length > 35) {
+                    createRow('>Error: Word to long to echo!')
+                }
+                else {
+                    createRow('>' + str);
+                }
             }
 
             function helpCom(){
@@ -106,11 +111,14 @@
             }
 
             function notCom(str) {
+                if (str.length > 30) {
+                    str = str.substring(0, 30) + "..."
+                }
                 if (str == '') {
                     createRow('>');
                 }
                 else {
-                    createRow('>' + str + ' is not a command!');
+                    createRow('>Error: \'' + str + '\' is not a command!');
                 }     
             }
         </script>
