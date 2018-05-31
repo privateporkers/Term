@@ -15,8 +15,12 @@
             var row;
             var termTable;
             var div1;
-            var test;
+            var test = false;
             var placeHolder;
+            var echoChange;
+            var wordCheck;
+            var baseWord = "hello";
+            var commandStrTwo;
 
             function setup() {
                 noCanvas();
@@ -45,6 +49,7 @@
             }
 
             function terminal() {
+                textChange();
 
                 //creates the new row
                 row = createElement('tr');
@@ -55,18 +60,27 @@
                 var command = input.value();
                 command = command.trim();
                 var index = command.indexOf(' ');
-                var commandStrTwo = command.substring(index + 1);
+                commandStrTwo = command.substring(index + 1);
+                baseWord = "hello";
                 var commandStrOne = command.substring(0, index);
 
                 //command conditionals
                 if (commandStrOne == "echo") {
-                    echoCom(commandStrTwo);
+                    if(wordCheck()){
+                        echoCom(commandStrTwo);
+                    }
+                    else{
+                    echoCom(echoChange);
+                }
                 }
                 else if (command == "clear") {
                     clearCom();
                 }
                 else if(command == "help"){
                     helpCom();
+                }
+                else if(commandStrOne == "text"){
+                    textCom(commandStrTwo);
                 }
                 else {
                     notCom(command);
@@ -75,11 +89,41 @@
                 input.value('');
             }
 
-            function keyPressed() {
-                if (keyCode == ENTER && input.value() == '') {
-                    createRow();
-                    row.html('>');
+            function textCom(str){
+                if(str == "gg"){
+                    test = true;
                 }
+            }
+
+            function textChange(){
+                //var rand = Math.trunc(random(1, 3));
+                var rand = 1;
+                if(rand == 1){
+                    echoChange = "hll";
+                }
+                else if(rand == 2){
+                }
+                else if(rand == 3){
+                }
+            }
+
+            function wordCheck(){
+                if(test){
+                    return true;
+                }
+                return false;
+            }
+
+            function randWord(){
+                var func = randCase();
+                if(func == 1){
+                    echoChange = "yyo";
+                }
+            }
+
+            function randCase(){
+                var rand = Math.trunc(random(1,3));
+                return rand;
             }
 
             function echoCom(str) {
@@ -89,9 +133,9 @@
 
             function helpCom(){
                 createRow();
-                row.html('>' +'echo [message]');
+                row.html('echo [message]');
                 createRow();
-                row.html('>' +'clear');
+                row.html('clear');
             }
 
             function clearCom() {
@@ -127,6 +171,13 @@
                 else {
                     row.html('>' + str + ' is not a command!');
                 }     
+            }
+
+            function keyPressed() {
+                if (keyCode == ENTER && input.value() == '') {
+                    createRow();
+                    row.html('>');
+                }
             }
         </script>
     </div>
