@@ -17,7 +17,7 @@ input {
     color: rgb(0, 255, 70);
     background-color: black;
     border: none;
-    width: 500px;
+    width: 750px;
     outline: none;
 }
 
@@ -28,6 +28,7 @@ p {
     color: rgb(0, 255, 70);
     background-color: black;
     margin: 0px;
+    padding: 1px;
 }
 
 #bar {
@@ -41,18 +42,24 @@ body {
 
 #console {
     background-color: rgb(0, 0, 0);
-    width: 500px;
-    padding: 5px;
     font-size: 18px;
     font-family: 'Press Start 2P';
     color: rgb(0, 255, 70);
+    width: 750px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -375px;
+    margin-top: -250px;
+    word-wrap: break-word;
 }
 
 tr {
     background-color: rgb(0, 0, 0);
-    width: 500px;
     padding: 5px;
     font-size: 18px;
     font-family: 'Press Start 2P';
     color: rgb(0, 255, 70);
+    word-wrap: break-word;
 }
