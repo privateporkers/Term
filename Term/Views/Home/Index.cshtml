@@ -99,8 +99,7 @@
             }
 
             function textChange(){
-                //var rand = Math.trunc(random(1, 3));
-                var rand = 1;
+                
                 if(rand == 1){
                     echoChange = "hll";
                 }
@@ -118,20 +117,25 @@
             }
 
             function randWord(){
-                var func = randCase();
-                if(func == 1){
-                    echoChange = "yyo";
+                var rand = Math.trunc(random(1, 3));
+                var case1 = "hello";
+                var case1 = "david";
+                var case1 = "independent";
+
+                if(rand == 1){
+                    baseWord = case1;
+                }
+                if(rand == 1){
+                    baseWord = case2;
+                }
+                if(rand == 3){
+                    baseWord = case3;
                 }
             }
             function keyPressed() {
                 if (keyCode == ENTER && input.value() == '') {
                     createRow('>');
                 }
-            }
-
-            function randCase(){
-                var rand = Math.trunc(random(1,3));
-                return rand;
             }
 
             function echoCom(str) {
