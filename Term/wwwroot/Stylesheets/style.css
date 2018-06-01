@@ -68,10 +68,12 @@ tr {
     background-color: white;
     font-family: monospace;
     text-align: center;
-    width: 100px;
+    width: 150px;
     height: 25px;
     border: 2px solid black;
-    margin-left: 325px;
+    margin-left: 300px;
     margin-top: -50px;
     margin-bottom: 25px;
+    color: black;
+    font-weight: bold;
 }
