@@ -37,7 +37,7 @@ p {
 }
 
 body {
-    
+   background-color: lightgrey; 
 }
 
 #console {
@@ -62,4 +62,18 @@ tr {
     font-family: 'Press Start 2P';
     color: rgb(0, 255, 70);
     word-wrap: break-word;
+}
+
+#wordBox {
+    background-color: white;
+    font-family: monospace;
+    text-align: center;
+    width: 150px;
+    height: 25px;
+    border: 2px solid black;
+    margin-left: 300px;
+    margin-top: -50px;
+    margin-bottom: 25px;
+    color: black;
+    font-weight: bold;
 }
