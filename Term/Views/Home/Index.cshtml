@@ -30,6 +30,12 @@
             //Runs at the start of the program
             function setup() {
                 noCanvas();
+
+                var title = createDiv();
+                title.parent('console');
+                title.id('title');
+                title.html('>TERM');
+
                 wordBox = createDiv();
                 wordBox.parent('console');
                 wordBox.id('wordBox');
@@ -51,6 +57,9 @@
                 input.elt.focus();
 
                 input.changed(terminal);
+
+                var border = createDiv();
+
             }
 
             //Creates a new row with 'str' as output
@@ -62,6 +71,7 @@
 
             //Runs when something is inputed through the input bar
             function terminal() {
+
 
                 var command = input.value();
                 command = command.trim();
@@ -98,7 +108,9 @@
                 }
 
                 input.value('');
+
             }
+            
 
             //Text command / currently only changes a word with no vowels to having vowels - CHANGE -
             function textCom(str) {
@@ -110,6 +122,7 @@
                     createRow('>text ' + str);
                 }          
             }
+
 
             //Test command - CHANGE -
             function textChange(str) {
