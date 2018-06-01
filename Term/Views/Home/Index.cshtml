@@ -9,8 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 
-<body>
+<body> 
     <div id="console">
+        <div id="wordBox">
+            <p></p>
+        </div>
         <script type="text/javascript">
             var input;
             var row;
@@ -139,7 +142,7 @@
             }
 
             function helpCom() {
-                createRow('*** HELP MENU **************************')
+                createRow('*** HELP MENU **************************');
                 createRow('*echo [message] - Returns message typed');
                 createRow('*clear - Clears the terminal window');
             }
