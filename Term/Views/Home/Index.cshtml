@@ -15,6 +15,7 @@
             <p></p>
         </div>
         <script type="text/javascript">
+            //Global Variables
             var input;
             var row;
             var termTable;
@@ -26,6 +27,7 @@
             var baseWord = "hello";
             var commandStrTwo;
 
+            //Runs at the start of the program
             function setup() {
                 noCanvas();
                 termTable = createElement('table');
@@ -43,28 +45,27 @@
 
                 input.elt.focus();
 
-                //function creates a new row for the termTable 'termTable' when pressed enter
                 input.changed(terminal);
             }
 
+            //Creates a new row with 'str' as output
             function createRow(str) {
                 row = createElement('tr');
                 row.parent(termTable);
                 row.html(str);
             }
 
+            //Runs when something is inputed through the input bar
             function terminal() {
                 textChange();
 
-                //adds text and styling to each row
-                //row.html('>You typed: ' + input.value());
                 var command = input.value();
                 command = command.trim();
                 var index = command.indexOf(' ');
                 commandStrTwo = command.substring(index + 1);
                 var commandStrOne = command.substring(0, index);
 
-                //command conditionals
+                //Command conditionals
                 if (commandStrOne == "echo") {
                     if (wordCheck()) {
                         echoCom(commandStrTwo);
@@ -89,6 +90,7 @@
                 input.value('');
             }
 
+            //Test command - CHANGE -
             function textCom(str) {
                 if (str == "gg") {
                     test = true;
@@ -96,6 +98,7 @@
                 createRow('>text ' + str);
             }
 
+            //Test command - CHANGE -
             function textChange() {
                 //var rand = Math.trunc(random(1, 3));
                 var rand = 1;
@@ -121,17 +124,21 @@
                     echoChange = "yyo";
                 }
             }
+
+            //Creates a new line with just a '>' when enter is pressed and there is no input
             function keyPressed() {
                 if (keyCode == ENTER && input.value() == '') {
                     createRow('>');
                 }
             }
 
+            //Rand Function
             function randCase() {
                 var rand = Math.trunc(random(1, 3));
                 return rand;
             }
 
+            //Outputs 'str' 
             function echoCom(str) {
                 if (str.length > 35) {
                     createRow('>Error: Word to long to echo!')
@@ -141,12 +148,14 @@
                 }
             }
 
+            //Outputs a help menu for commands
             function helpCom() {
                 createRow('*** HELP MENU **************************');
                 createRow('*echo [message] - Returns message typed');
                 createRow('*clear - Clears the terminal window');
             }
 
+            //Clears the terminal - removes all elements created and creates new ones
             function clearCom() {
                 termTable.remove();
                 div1.remove();
@@ -171,6 +180,7 @@
                 input.changed(terminal);
             }
 
+            //Outputs an error message if no command leads the input message
             function notCom(str) {
                 if (str.length > 30) {
                     str = str.substring(0, 30) + "..."
