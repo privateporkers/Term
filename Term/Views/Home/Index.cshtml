@@ -26,6 +26,8 @@
             var commandStrTwo;
             var wordBox;
             var word = pickRandomWord();
+            var time = 0;
+            var timeDisplay = 30;
 
             //Runs at the start of the program
             function setup() {
@@ -76,18 +78,18 @@
             }
 
             function timer() {
-                var time = 0;
-                var index = 30;
+                time = 0;
+                timeDisplay = 30;
                 var countDown = createP('');
                 for(var i = 0; i < 31; i++  ){
 
                     setTimeout(function(){ 
                         countDown.remove(); 
-                        countDown = createP(index); 
+                        countDown = createP(timeDisplay); 
                         countDown.parent('wordBox');
-                        index--;
+                        timeDisplay--;
 
-                        if(index == -1){
+                        if(timeDisplay == -1){
                             gameOver();
                         }
                     }, time);
