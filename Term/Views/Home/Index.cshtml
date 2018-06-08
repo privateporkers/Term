@@ -63,6 +63,18 @@
                 timer();
             }
 
+            function gameOver() {
+                termTable.remove();
+                tableDiv.remove();
+                input.remove();
+                placeHolder.remove();
+
+                var endGame = createP("GAME OVER");
+                endGame.id('gameEnd');
+                endGame.parent('console');
+
+            }
+
             function timer() {
                 var time = 0;
                 var index = 30;
@@ -74,6 +86,10 @@
                         countDown = createP(index); 
                         countDown.parent('wordBox');
                         index--;
+
+                        if(index == -1){
+                            gameOver();
+                        }
                     }, time);
 
                     time += 1000;
