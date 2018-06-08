@@ -60,6 +60,25 @@
 
                 var border = createDiv();
 
+                timer();
+            }
+
+            function timer() {
+                var time = 0;
+                var index = 30;
+                var countDown = createP('');
+                for(var i = 0; i < 31; i++  ){
+
+                    setTimeout(function(){ 
+                        countDown.remove(); 
+                        countDown = createP(index); 
+                        countDown.parent('wordBox');
+                        index--;
+                    }, time);
+
+                    time += 1000;
+                }
+                
             }
 
             //Creates a new row with 'str' as output
